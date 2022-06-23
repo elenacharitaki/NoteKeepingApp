@@ -15,6 +15,9 @@ namespace NoteKeepingApp
     {
         string noteTitle;
         string noteBody;
+        bool update = false;
+        int noteId;
+
         public Home()
         {
             InitializeComponent();
@@ -25,13 +28,21 @@ namespace NoteKeepingApp
             noteTitle = tbNoteTitle.Text;
             noteBody = rtbNoteBody.Text;
 
-            insertToDB(noteTitle, noteBody);
-
+            if(update == true)
+            {
+                UpdateNoteInDb(noteId, noteTitle, noteBody);
+                update = false;
+            }
+            else
+            {
+                InsertToDB(noteTitle, noteBody);
+            }
+            
             tbNoteTitle.Text = "";
             rtbNoteBody.Text = "";
         }
 
-        private void insertToDB(string noteTitle, string noteBody)
+        private void InsertToDB(string noteTitle, string noteBody)
         {
             string connectionString = Properties.Settings.Default.NotesDbConnectionString;
             using(SqlConnection connection = new SqlConnection(connectionString))
@@ -78,6 +89,30 @@ namespace NoteKeepingApp
                     }
                     lbAllNotes.DataSource = notes;
                 }
+            }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            Note selectedNote = (Note)lbAllNotes.SelectedItem;
+            noteId = selectedNote.Id;
+            tbNoteTitle.Text = selectedNote.Title;
+            rtbNoteBody.Text = selectedNote.Body;
+            update = true;
+        }
+
+        private void UpdateNoteInDb(int id, string title, string body)
+        {
+            string connectionString = Properties.Settings.Default.NotesDbConnectionString;
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string sql = String.Format("UPDATE Notes SET Title='{0}', Body='{1}' WHERE NoteId='{2}'", title, body, id);
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    command.ExecuteNonQuery();
+                }
+                LoadNoteList();
             }
         }
     }

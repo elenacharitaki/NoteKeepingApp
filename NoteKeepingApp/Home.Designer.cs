@@ -35,6 +35,8 @@
             this.lblNoteBody = new System.Windows.Forms.Label();
             this.rtbNoteBody = new System.Windows.Forms.RichTextBox();
             this.lblAllNotes = new System.Windows.Forms.Label();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lbAllNotes
@@ -98,11 +100,32 @@
             this.lblAllNotes.TabIndex = 6;
             this.lblAllNotes.Text = "All notes";
             // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(444, 339);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(129, 23);
+            this.btnEdit.TabIndex = 7;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(638, 339);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(129, 23);
+            this.btnDelete.TabIndex = 8;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.lblAllNotes);
             this.Controls.Add(this.rtbNoteBody);
             this.Controls.Add(this.lblNoteBody);
@@ -127,6 +150,8 @@
         private System.Windows.Forms.Label lblNoteBody;
         private System.Windows.Forms.RichTextBox rtbNoteBody;
         private System.Windows.Forms.Label lblAllNotes;
+        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
 
