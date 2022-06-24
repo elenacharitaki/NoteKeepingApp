@@ -36,18 +36,21 @@
             // 
             this.lblShowTitle.AutoSize = true;
             this.lblShowTitle.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.lblShowTitle.Location = new System.Drawing.Point(200, 70);
+            this.lblShowTitle.Location = new System.Drawing.Point(39, 33);
+            this.lblShowTitle.MaximumSize = new System.Drawing.Size(600, 0);
             this.lblShowTitle.Name = "lblShowTitle";
             this.lblShowTitle.Size = new System.Drawing.Size(52, 28);
             this.lblShowTitle.TabIndex = 2;
             this.lblShowTitle.Text = "Title";
-            this.lblShowTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblShowTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblShowBody
             // 
             this.lblShowBody.AutoSize = true;
             this.lblShowBody.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
-            this.lblShowBody.Location = new System.Drawing.Point(200, 150);
+            this.lblShowBody.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblShowBody.Location = new System.Drawing.Point(40, 108);
+            this.lblShowBody.MaximumSize = new System.Drawing.Size(600, 0);
             this.lblShowBody.Name = "lblShowBody";
             this.lblShowBody.Size = new System.Drawing.Size(45, 21);
             this.lblShowBody.TabIndex = 3;

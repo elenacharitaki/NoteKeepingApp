@@ -54,7 +54,7 @@
             // 
             this.btnSaveNote.Location = new System.Drawing.Point(169, 297);
             this.btnSaveNote.Name = "btnSaveNote";
-            this.btnSaveNote.Size = new System.Drawing.Size(129, 23);
+            this.btnSaveNote.Size = new System.Drawing.Size(130, 25);
             this.btnSaveNote.TabIndex = 1;
             this.btnSaveNote.Text = "Save note";
             this.btnSaveNote.UseVisualStyleBackColor = true;
@@ -106,7 +106,7 @@
             // 
             this.btnEdit.Location = new System.Drawing.Point(444, 339);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(129, 23);
+            this.btnEdit.Size = new System.Drawing.Size(100, 25);
             this.btnEdit.TabIndex = 7;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
@@ -114,9 +114,9 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(638, 339);
+            this.btnDelete.Location = new System.Drawing.Point(666, 339);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(129, 23);
+            this.btnDelete.Size = new System.Drawing.Size(100, 25);
             this.btnDelete.TabIndex = 8;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -124,9 +124,9 @@
             // 
             // btnShow
             // 
-            this.btnShow.Location = new System.Drawing.Point(538, 378);
+            this.btnShow.Location = new System.Drawing.Point(555, 339);
             this.btnShow.Name = "btnShow";
-            this.btnShow.Size = new System.Drawing.Size(129, 23);
+            this.btnShow.Size = new System.Drawing.Size(100, 25);
             this.btnShow.TabIndex = 9;
             this.btnShow.Text = "Show";
             this.btnShow.UseVisualStyleBackColor = true;
