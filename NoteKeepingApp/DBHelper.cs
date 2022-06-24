@@ -63,6 +63,27 @@ namespace NoteKeepingApp
             return result;
         }
 
+        public static Note SelectFromDb(int id)
+        {
+            Note note = new Note();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string sql = String.Format("SELECT * FROM Notes WHERE NoteId='{0}'", id);
+                using (SqlCommand command = new SqlCommand(sql, connection))
+                {
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        note.Id = reader.GetInt32(0);
+                        note.Title = reader.GetString(1);
+                        note.Body = reader.GetString(2);
+                    }
+                }
+            }
+            return note;
+        }
+
         public static void DeleteFromDb(int id)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))

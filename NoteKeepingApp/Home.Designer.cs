@@ -37,6 +37,7 @@
             this.lblAllNotes = new System.Windows.Forms.Label();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.btnShow = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lbAllNotes
@@ -47,6 +48,7 @@
             this.lbAllNotes.Name = "lbAllNotes";
             this.lbAllNotes.Size = new System.Drawing.Size(323, 228);
             this.lbAllNotes.TabIndex = 0;
+            this.lbAllNotes.SelectedIndexChanged += new System.EventHandler(this.lbAllNotes_SelectedIndexChanged);
             // 
             // btnSaveNote
             // 
@@ -120,11 +122,22 @@
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // btnShow
+            // 
+            this.btnShow.Location = new System.Drawing.Point(538, 378);
+            this.btnShow.Name = "btnShow";
+            this.btnShow.Size = new System.Drawing.Size(129, 23);
+            this.btnShow.TabIndex = 9;
+            this.btnShow.Text = "Show";
+            this.btnShow.UseVisualStyleBackColor = true;
+            this.btnShow.Click += new System.EventHandler(this.btnShow_Click);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnShow);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.lblAllNotes);
@@ -153,6 +166,7 @@
         private System.Windows.Forms.Label lblAllNotes;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnShow;
     }
 }
 

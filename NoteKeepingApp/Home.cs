@@ -44,17 +44,6 @@ namespace NoteKeepingApp
         {
             LoadNoteList();
         }
-
-        private void LoadNoteList()
-        {
-            List<Note> notes = new List<Note>();
-            lbAllNotes.DisplayMember = "Title";
-            lbAllNotes.ValueMember = "Id";
-
-            notes = DBHelper.SelectAllNotesFromDb();
-            lbAllNotes.DataSource = notes;
-        }
-
         private void btnEdit_Click(object sender, EventArgs e)
         {
             Note selectedNote = (Note)lbAllNotes.SelectedItem;
@@ -64,18 +53,61 @@ namespace NoteKeepingApp
             update = true;
         }
 
-        private void ClearForm()
-        {
-            tbNoteTitle.Text = "";
-            rtbNoteBody.Text = "";
-        }
-
         private void btnDelete_Click(object sender, EventArgs e)
         {
             Note selectedNote = (Note)lbAllNotes.SelectedItem;
             noteId = selectedNote.Id;
             DBHelper.DeleteFromDb(noteId);
             LoadNoteList();
+        }
+
+        private void btnShow_Click(object sender, EventArgs e)
+        {
+            Note selectedNote = (Note)lbAllNotes.SelectedItem;
+            noteId = selectedNote.Id;
+            ShowNote noteForm = new ShowNote(noteId);
+            noteForm.Show();
+            noteForm.Activate();
+        }
+
+        private void lbAllNotes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ActivateButtons();
+        }
+
+        private void LoadNoteList()
+        {
+            List<Note> notes = new List<Note>();
+            lbAllNotes.DisplayMember = "Title";
+            lbAllNotes.ValueMember = "Id";
+
+            notes = DBHelper.SelectAllNotesFromDb();
+            lbAllNotes.DataSource = notes;
+
+
+            lbAllNotes.SelectedItem = null;
+            ActivateButtons();
+        }
+        private void ClearForm()
+        {
+            tbNoteTitle.Text = "";
+            rtbNoteBody.Text = "";
+        }
+
+        private void ActivateButtons()
+        {
+            if(lbAllNotes.SelectedItem == null)
+            {
+                btnEdit.Enabled = false;
+                btnDelete.Enabled = false;
+                btnShow.Enabled = false;
+            }
+            else
+            {
+                btnEdit.Enabled = true;
+                btnDelete.Enabled = true;
+                btnShow.Enabled = true;
+            }
         }
     }
 }
