@@ -38,13 +38,18 @@
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnShow = new System.Windows.Forms.Button();
+            this.notesDbDataSet1 = new NoteKeepingApp.NotesDbDataSet();
+            this.lblNewNote = new System.Windows.Forms.Label();
+            this.lblShowNoteTitle = new System.Windows.Forms.Label();
+            this.lblShowNoteBody = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.notesDbDataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // lbAllNotes
             // 
             this.lbAllNotes.FormattingEnabled = true;
             this.lbAllNotes.ItemHeight = 16;
-            this.lbAllNotes.Location = new System.Drawing.Point(444, 92);
+            this.lbAllNotes.Location = new System.Drawing.Point(454, 61);
             this.lbAllNotes.Name = "lbAllNotes";
             this.lbAllNotes.Size = new System.Drawing.Size(323, 228);
             this.lbAllNotes.TabIndex = 0;
@@ -52,7 +57,7 @@
             // 
             // btnSaveNote
             // 
-            this.btnSaveNote.Location = new System.Drawing.Point(169, 297);
+            this.btnSaveNote.Location = new System.Drawing.Point(179, 307);
             this.btnSaveNote.Name = "btnSaveNote";
             this.btnSaveNote.Size = new System.Drawing.Size(130, 25);
             this.btnSaveNote.TabIndex = 1;
@@ -63,7 +68,7 @@
             // lblNoteTitle
             // 
             this.lblNoteTitle.AutoSize = true;
-            this.lblNoteTitle.Location = new System.Drawing.Point(76, 73);
+            this.lblNoteTitle.Location = new System.Drawing.Point(86, 83);
             this.lblNoteTitle.Name = "lblNoteTitle";
             this.lblNoteTitle.Size = new System.Drawing.Size(33, 16);
             this.lblNoteTitle.TabIndex = 2;
@@ -71,7 +76,7 @@
             // 
             // tbNoteTitle
             // 
-            this.tbNoteTitle.Location = new System.Drawing.Point(79, 92);
+            this.tbNoteTitle.Location = new System.Drawing.Point(89, 102);
             this.tbNoteTitle.Name = "tbNoteTitle";
             this.tbNoteTitle.Size = new System.Drawing.Size(313, 22);
             this.tbNoteTitle.TabIndex = 3;
@@ -79,7 +84,7 @@
             // lblNoteBody
             // 
             this.lblNoteBody.AutoSize = true;
-            this.lblNoteBody.Location = new System.Drawing.Point(76, 140);
+            this.lblNoteBody.Location = new System.Drawing.Point(86, 150);
             this.lblNoteBody.Name = "lblNoteBody";
             this.lblNoteBody.Size = new System.Drawing.Size(39, 16);
             this.lblNoteBody.TabIndex = 4;
@@ -87,7 +92,7 @@
             // 
             // rtbNoteBody
             // 
-            this.rtbNoteBody.Location = new System.Drawing.Point(79, 159);
+            this.rtbNoteBody.Location = new System.Drawing.Point(89, 169);
             this.rtbNoteBody.Name = "rtbNoteBody";
             this.rtbNoteBody.Size = new System.Drawing.Size(313, 96);
             this.rtbNoteBody.TabIndex = 5;
@@ -96,15 +101,16 @@
             // lblAllNotes
             // 
             this.lblAllNotes.AutoSize = true;
-            this.lblAllNotes.Location = new System.Drawing.Point(441, 73);
+            this.lblAllNotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblAllNotes.Location = new System.Drawing.Point(450, 38);
             this.lblAllNotes.Name = "lblAllNotes";
-            this.lblAllNotes.Size = new System.Drawing.Size(58, 16);
+            this.lblAllNotes.Size = new System.Drawing.Size(74, 20);
             this.lblAllNotes.TabIndex = 6;
             this.lblAllNotes.Text = "All notes";
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(444, 339);
+            this.btnEdit.Location = new System.Drawing.Point(454, 308);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(100, 25);
             this.btnEdit.TabIndex = 7;
@@ -114,7 +120,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(666, 339);
+            this.btnDelete.Location = new System.Drawing.Point(676, 308);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(100, 25);
             this.btnDelete.TabIndex = 8;
@@ -124,7 +130,7 @@
             // 
             // btnShow
             // 
-            this.btnShow.Location = new System.Drawing.Point(555, 339);
+            this.btnShow.Location = new System.Drawing.Point(565, 308);
             this.btnShow.Name = "btnShow";
             this.btnShow.Size = new System.Drawing.Size(100, 25);
             this.btnShow.TabIndex = 9;
@@ -132,11 +138,51 @@
             this.btnShow.UseVisualStyleBackColor = true;
             this.btnShow.Click += new System.EventHandler(this.btnShow_Click);
             // 
+            // notesDbDataSet1
+            // 
+            this.notesDbDataSet1.DataSetName = "NotesDbDataSet";
+            this.notesDbDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // lblNewNote
+            // 
+            this.lblNewNote.AutoSize = true;
+            this.lblNewNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblNewNote.Location = new System.Drawing.Point(85, 38);
+            this.lblNewNote.Name = "lblNewNote";
+            this.lblNewNote.Size = new System.Drawing.Size(79, 20);
+            this.lblNewNote.TabIndex = 10;
+            this.lblNewNote.Text = "New note";
+            // 
+            // lblShowNoteTitle
+            // 
+            this.lblShowNoteTitle.AutoSize = true;
+            this.lblShowNoteTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblShowNoteTitle.Location = new System.Drawing.Point(90, 391);
+            this.lblShowNoteTitle.MaximumSize = new System.Drawing.Size(720, 0);
+            this.lblShowNoteTitle.Name = "lblShowNoteTitle";
+            this.lblShowNoteTitle.Size = new System.Drawing.Size(19, 29);
+            this.lblShowNoteTitle.TabIndex = 11;
+            this.lblShowNoteTitle.Text = " ";
+            // 
+            // lblShowNoteBody
+            // 
+            this.lblShowNoteBody.AutoSize = true;
+            this.lblShowNoteBody.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(161)));
+            this.lblShowNoteBody.Location = new System.Drawing.Point(90, 458);
+            this.lblShowNoteBody.MaximumSize = new System.Drawing.Size(720, 0);
+            this.lblShowNoteBody.Name = "lblShowNoteBody";
+            this.lblShowNoteBody.Size = new System.Drawing.Size(15, 22);
+            this.lblShowNoteBody.TabIndex = 12;
+            this.lblShowNoteBody.Text = " ";
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(882, 653);
+            this.Controls.Add(this.lblShowNoteBody);
+            this.Controls.Add(this.lblShowNoteTitle);
+            this.Controls.Add(this.lblNewNote);
             this.Controls.Add(this.btnShow);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnEdit);
@@ -150,6 +196,7 @@
             this.Name = "Home";
             this.Text = "Home";
             this.Load += new System.EventHandler(this.Home_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.notesDbDataSet1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -167,6 +214,10 @@
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnShow;
+        private NotesDbDataSet notesDbDataSet1;
+        private System.Windows.Forms.Label lblNewNote;
+        private System.Windows.Forms.Label lblShowNoteTitle;
+        private System.Windows.Forms.Label lblShowNoteBody;
     }
 }
 

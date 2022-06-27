@@ -48,15 +48,17 @@ namespace NoteKeepingApp
                 string sql = "SELECT * FROM Notes";
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
+                    using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        Note note = new Note();
-                        note.Id = reader.GetInt32(0);
-                        note.Title = reader.GetString(1);
-                        note.Body = reader.GetString(2);
+                        while (reader.Read())
+                        {
+                            Note note = new Note();
+                            note.Id = reader.GetInt32(0);
+                            note.Title = reader.GetString(1);
+                            note.Body = reader.GetString(2);
 
-                        result.Add(note);
+                            result.Add(note);
+                        }
                     }
                 }
             }
@@ -72,12 +74,14 @@ namespace NoteKeepingApp
                 string sql = String.Format("SELECT * FROM Notes WHERE NoteId='{0}'", id);
                 using (SqlCommand command = new SqlCommand(sql, connection))
                 {
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
+                    using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        note.Id = reader.GetInt32(0);
-                        note.Title = reader.GetString(1);
-                        note.Body = reader.GetString(2);
+                        while (reader.Read())
+                        {
+                            note.Id = reader.GetInt32(0);
+                            note.Title = reader.GetString(1);
+                            note.Body = reader.GetString(2);
+                        }
                     }
                 }
             }

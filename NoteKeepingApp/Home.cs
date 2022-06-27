@@ -65,14 +65,22 @@ namespace NoteKeepingApp
         {
             Note selectedNote = (Note)lbAllNotes.SelectedItem;
             noteId = selectedNote.Id;
-            ShowNote noteForm = new ShowNote(noteId);
-            noteForm.Show();
-            noteForm.Activate();
+            Note note = DBHelper.SelectFromDb(noteId);
+            lblShowNoteTitle.Text = note.Title;
+            lblShowNoteBody.Text = note.Body;
         }
 
         private void lbAllNotes_SelectedIndexChanged(object sender, EventArgs e)
         {
             ActivateButtons();
+            Note selectedNote = (Note)lbAllNotes.SelectedItem;
+            if (selectedNote != null)
+            {
+                noteId = selectedNote.Id;
+                Note note = DBHelper.SelectFromDb(noteId);
+                lblShowNoteTitle.Text = note.Title;
+                lblShowNoteBody.Text = note.Body;
+            }
         }
 
         private void LoadNoteList()
