@@ -61,25 +61,18 @@ namespace NoteKeepingApp
             LoadNoteList();
         }
 
-        private void btnShow_Click(object sender, EventArgs e)
-        {
-            Note selectedNote = (Note)lbAllNotes.SelectedItem;
-            noteId = selectedNote.Id;
-            Note note = DBHelper.SelectFromDb(noteId);
-            lblShowNoteTitle.Text = note.Title;
-            lblShowNoteBody.Text = note.Body;
-        }
-
         private void lbAllNotes_SelectedIndexChanged(object sender, EventArgs e)
         {
             ActivateButtons();
-            Note selectedNote = (Note)lbAllNotes.SelectedItem;
-            if (selectedNote != null)
+            if (lbAllNotes.SelectedIndex != -1)
             {
-                noteId = selectedNote.Id;
-                Note note = DBHelper.SelectFromDb(noteId);
-                lblShowNoteTitle.Text = note.Title;
-                lblShowNoteBody.Text = note.Body;
+                Note selectedNote = (Note)lbAllNotes.SelectedItem;
+                SelectNote(selectedNote);
+            }
+            else
+            {
+                lblShowNoteTitle.Text = "";
+                lblShowNoteBody.Text = "";
             }
         }
 
@@ -93,7 +86,7 @@ namespace NoteKeepingApp
             lbAllNotes.DataSource = notes;
 
 
-            lbAllNotes.SelectedItem = null;
+            lbAllNotes.SelectedIndex = -1;
             ActivateButtons();
         }
         private void ClearForm()
@@ -104,18 +97,24 @@ namespace NoteKeepingApp
 
         private void ActivateButtons()
         {
-            if(lbAllNotes.SelectedItem == null)
+            if(lbAllNotes.SelectedIndex == -1)
             {
                 btnEdit.Enabled = false;
                 btnDelete.Enabled = false;
-                btnShow.Enabled = false;
             }
             else
             {
                 btnEdit.Enabled = true;
                 btnDelete.Enabled = true;
-                btnShow.Enabled = true;
             }
+        }
+
+        private void SelectNote(Note selectedNote)
+        {
+            noteId = selectedNote.Id;
+            Note note = DBHelper.SelectFromDb(noteId);
+            lblShowNoteTitle.Text = note.Title;
+            lblShowNoteBody.Text = note.Body;
         }
     }
 }

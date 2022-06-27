@@ -37,7 +37,6 @@
             this.lblAllNotes = new System.Windows.Forms.Label();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.btnShow = new System.Windows.Forms.Button();
             this.notesDbDataSet1 = new NoteKeepingApp.NotesDbDataSet();
             this.lblNewNote = new System.Windows.Forms.Label();
             this.lblShowNoteTitle = new System.Windows.Forms.Label();
@@ -112,7 +111,7 @@
             // 
             this.btnEdit.Location = new System.Drawing.Point(454, 308);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(100, 25);
+            this.btnEdit.Size = new System.Drawing.Size(136, 25);
             this.btnEdit.TabIndex = 7;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
@@ -120,23 +119,13 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(676, 308);
+            this.btnDelete.Location = new System.Drawing.Point(641, 308);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(100, 25);
+            this.btnDelete.Size = new System.Drawing.Size(136, 25);
             this.btnDelete.TabIndex = 8;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // btnShow
-            // 
-            this.btnShow.Location = new System.Drawing.Point(565, 308);
-            this.btnShow.Name = "btnShow";
-            this.btnShow.Size = new System.Drawing.Size(100, 25);
-            this.btnShow.TabIndex = 9;
-            this.btnShow.Text = "Show";
-            this.btnShow.UseVisualStyleBackColor = true;
-            this.btnShow.Click += new System.EventHandler(this.btnShow_Click);
             // 
             // notesDbDataSet1
             // 
@@ -160,9 +149,8 @@
             this.lblShowNoteTitle.Location = new System.Drawing.Point(90, 391);
             this.lblShowNoteTitle.MaximumSize = new System.Drawing.Size(720, 0);
             this.lblShowNoteTitle.Name = "lblShowNoteTitle";
-            this.lblShowNoteTitle.Size = new System.Drawing.Size(19, 29);
+            this.lblShowNoteTitle.Size = new System.Drawing.Size(0, 29);
             this.lblShowNoteTitle.TabIndex = 11;
-            this.lblShowNoteTitle.Text = " ";
             // 
             // lblShowNoteBody
             // 
@@ -171,9 +159,8 @@
             this.lblShowNoteBody.Location = new System.Drawing.Point(90, 458);
             this.lblShowNoteBody.MaximumSize = new System.Drawing.Size(720, 0);
             this.lblShowNoteBody.Name = "lblShowNoteBody";
-            this.lblShowNoteBody.Size = new System.Drawing.Size(15, 22);
+            this.lblShowNoteBody.Size = new System.Drawing.Size(0, 22);
             this.lblShowNoteBody.TabIndex = 12;
-            this.lblShowNoteBody.Text = " ";
             // 
             // Home
             // 
@@ -183,7 +170,6 @@
             this.Controls.Add(this.lblShowNoteBody);
             this.Controls.Add(this.lblShowNoteTitle);
             this.Controls.Add(this.lblNewNote);
-            this.Controls.Add(this.btnShow);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.lblAllNotes);
@@ -213,7 +199,6 @@
         private System.Windows.Forms.Label lblAllNotes;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button btnShow;
         private NotesDbDataSet notesDbDataSet1;
         private System.Windows.Forms.Label lblNewNote;
         private System.Windows.Forms.Label lblShowNoteTitle;
