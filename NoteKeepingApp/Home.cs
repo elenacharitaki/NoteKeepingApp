@@ -23,6 +23,11 @@ namespace NoteKeepingApp
             InitializeComponent();
         }
 
+        private void Home_Load(object sender, EventArgs e)
+        {
+            LoadNoteList();
+        }
+
         private void btnSaveNote_Click(object sender, EventArgs e)
         {
             noteTitle = tbNoteTitle.Text;
@@ -30,22 +35,19 @@ namespace NoteKeepingApp
 
             if(update == true)
             {
-                DBHelper.UpdateNoteInDb(noteId, noteTitle, noteBody);
+                DBHelper.UpdateNote(noteId, noteTitle, noteBody);
                 update = false;
             }
             else
             {
-                DBHelper.InsertToDB(noteTitle, noteBody);
+                DBHelper.InsertNote(noteTitle, noteBody);
             }
             LoadNoteList();
             ClearForm();
         }
-        private void Home_Load(object sender, EventArgs e)
-        {
-            LoadNoteList();
-        }
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            //fill the form with note's data to update
             Note selectedNote = (Note)lbAllNotes.SelectedItem;
             noteId = selectedNote.Id;
             tbNoteTitle.Text = selectedNote.Title;
@@ -55,39 +57,33 @@ namespace NoteKeepingApp
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            //delete note from db, clear form and reload the list
+            update = false; 
             Note selectedNote = (Note)lbAllNotes.SelectedItem;
             noteId = selectedNote.Id;
-            DBHelper.DeleteFromDb(noteId);
+            DBHelper.DeleteNote(noteId);
+            ClearForm();
             LoadNoteList();
         }
 
         private void lbAllNotes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ActivateButtons();
-            if (lbAllNotes.SelectedIndex != -1)
-            {
-                Note selectedNote = (Note)lbAllNotes.SelectedItem;
-                SelectNote(selectedNote);
-            }
-            else
-            {
-                lblShowNoteTitle.Text = "";
-                lblShowNoteBody.Text = "";
-            }
+            ButtonBehaviour();
         }
 
         private void LoadNoteList()
         {
+            //empty list for the notes
             List<Note> notes = new List<Note>();
+            //list box behaviour
             lbAllNotes.DisplayMember = "Title";
             lbAllNotes.ValueMember = "Id";
-
-            notes = DBHelper.SelectAllNotesFromDb();
+            //select notes from db and populate the list box
+            notes = DBHelper.SelectAllNotes();
             lbAllNotes.DataSource = notes;
-
-
+            //set default: nothing selected
             lbAllNotes.SelectedIndex = -1;
-            ActivateButtons();
+            ButtonBehaviour();
         }
         private void ClearForm()
         {
@@ -95,26 +91,20 @@ namespace NoteKeepingApp
             rtbNoteBody.Text = "";
         }
 
-        private void ActivateButtons()
+        private void ButtonBehaviour()
         {
             if(lbAllNotes.SelectedIndex == -1)
             {
+                //if nothing selected deactivate buttons edit and delete
                 btnEdit.Enabled = false;
                 btnDelete.Enabled = false;
             }
             else
             {
+                //if something is selected activate buttons
                 btnEdit.Enabled = true;
                 btnDelete.Enabled = true;
             }
-        }
-
-        private void SelectNote(Note selectedNote)
-        {
-            noteId = selectedNote.Id;
-            Note note = DBHelper.SelectFromDb(noteId);
-            lblShowNoteTitle.Text = note.Title;
-            lblShowNoteBody.Text = note.Body;
         }
     }
 }
